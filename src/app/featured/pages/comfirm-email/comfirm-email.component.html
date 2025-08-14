@@ -1,0 +1,105 @@
+<div class="w-full md:w-[75%]  mx-auto bg-[rgba(255,255,255,0.3)] rounded-3xl pb-5">
+  <div class="flex flex-wrap flex-col-reverse md:flex-row ">
+
+
+    <div class="w-full md:w-[50%] px-5">
+
+      <div class="forget__password__content mt-5 w-full">
+        <h1 class="text-2xl text-center text-main font-semibold ">Confirm Email</h1>
+        <p class="text-transparent  mx-auto text-center invisible">Lorem ipsum dolor sit amet consectetur. Eu eget
+          tristique quis
+          risus quam. Aliquam quis amet euismod vitae sollicitudin.</p>
+
+      </div>
+
+      <form [formGroup]="comfirmEmailForm" (ngSubmit)="comfirmEmailFormSubmit()" class="form__content mt-5">
+
+        <!-- Email Input -->
+        <div class="mt-5">
+          <label for="email" class="text-main ms-1 mb-3 block">Email or Mobile number</label>
+          <input type="email" id="email" name="email" formControlName="email"
+            class="w-full p-3 rounded-lg bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+          @let emailInput = comfirmEmailForm.get('email');
+          @if(emailInput?.errors && emailInput?.touched) {
+          <div class="flex p-4 mb-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            role="alert">
+            <div>
+              <ul class="list-disc list-inside">
+                @if (emailInput?.getError('required')) {
+
+                <li>email is required.</li>
+                }@else if (emailInput?.getError('email')) {
+
+                <li>Email format is invalid</li>
+                }
+
+              </ul>
+            </div>
+          </div>
+          }
+        </div>
+
+        <!-- OTP Input -->
+        <div class="mt-5">
+          <label class="text-main ms-1 mb-3 block">Otp</label>
+          <input formControlName="otp" type="text" id="otp" name="otp"
+            class="w-full p-3 rounded-lg bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+          @let otpInput = comfirmEmailForm.get('otp');
+          @if(otpInput?.errors&& otpInput?.touched) {
+          <div class="flex p-4 mb-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            role="alert">
+            <div>
+              <ul class="list-disc list-inside">
+                @if (otpInput?.getError('required')) {
+
+                <li>otp is required.</li>
+                }@else if (otpInput?.getError('minlength')) {
+
+                <li>otp must be at least 6 characters long.</li>
+                }@else if (otpInput?.getError('maxlength')) {
+
+                <li>otp must not exceed 6 characters.</li>
+                }@else if (otpInput?.getError('pattern')) {
+
+                <li>otp can only contain numbers.</li>
+                }
+
+              </ul>
+            </div>
+          </div>
+          }
+
+
+
+
+        </div>
+
+        <div class="mt-5">
+          <button class="w-full p-3 rounded-lg bg-primary text-white cursor-pointer">
+            @if(isCalingApi()){
+            <i class="pi pi-spin pi-spinner" style="font-size: 1.5rem"></i>
+            }@else {
+            Send
+            }
+          </button>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="hidden md:block md:w-[50%] px-5 pb-8">
+
+      <div>
+        <h2 class="text-[64px] text-[#FFFFFF] font-bold">Welcome back!</h2>
+        <p class="text-[#FFFFFF] text-2xl font-medium">Let’s make your dream in reality</p>
+      </div>
+      <div class="forget__password__image mt-5 ">
+        <img src="images/Auth_images/mainAuthImage.png" alt="Forget Password Image"
+          class="w-[300px] h-[300px] mx-auto md:mx-[0px]">
+      </div>
+    </div>
+
+  </div>
+
+</div>

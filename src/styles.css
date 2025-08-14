@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import "primeicons/primeicons.css";
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+@theme {
+  --color-main: #212529;
+  --color-secondary: #7B61FF;
+  --color-body: #6F6A80;
+  --color-primary: #7B61FF;
+}
